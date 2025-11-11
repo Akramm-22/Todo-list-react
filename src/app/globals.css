@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf7f5;
+  --foreground: #2d2d2d;
+  --primary: #a87d5f;
+  --secondary: #e6d5c9;
+  --accent: #785741;
+  --card: #ffffff;
+}
+
+[data-theme="dark"] {
+  --background: #1a1816;
+  --foreground: #e8e8e8;
+  --primary: #c49a7e;
+  --secondary: #4a3c34;
+  --accent: #dbb59b;
+  --card: #252220;
 }
 
 @theme inline {
@@ -19,7 +32,32 @@
   }
 }
 
+/* @tailwind base;
+@tailwind components; */
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-[var(--primary)] text-white rounded-lg hover:opacity-90 transition-opacity;
+  }
+  
+  .card {
+    @apply bg-[var(--card)] rounded-xl shadow-md p-6 transition-all;
+  }
+
+  .input-field {
+    @apply p-2 rounded-lg border border-[var(--secondary)] bg-[var(--card)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)];
+  }
+}
+
 body {
+  @apply bg-white text-gray-900;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
